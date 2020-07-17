@@ -50,8 +50,8 @@ function brickCalculator(buildingHeight) {
 	} else return "invalid input!";
 }
 
-//tiny friends (problem -4)
-function tinyFriends(frindsName) {
+//tiny friend (problem -4)
+function tinyFriend(frindsName) {
 	if (frindsName.length <= 0) return "invalid input!";
 
 	let minimumNameLength = Number.MAX_SAFE_INTEGER;
@@ -60,7 +60,7 @@ function tinyFriends(frindsName) {
 
 	let nameLength;
 
-	let count = 0;
+	let count = false;
 
 	let names = []; // for multiple friends with tiny names
 
@@ -69,10 +69,11 @@ function tinyFriends(frindsName) {
 		if (nameLength <= minimumNameLength) {
 			minimumNameLength = nameLength;
 			tinyFriendName = name;
-			if (index != 0) {
-				count++;
-				names.push(name);
+			if (index > 0 && nameLength < names[0].length && count !== true) {
+				names.shift();
+				count = true;
 			}
+			names.push(name);
 		}
 	});
 
@@ -87,18 +88,9 @@ console.log(feetToMile(5));
 console.log(woodCalculator(7, 4, 3));
 
 // for problem 3
-console.log(brickCalculator(11));
+console.log(brickCalculator(30));
 
 //for problem 4
 console.log(
-	tinyFriends([
-		"sakib",
-		"rafa",
-		"faria",
-		"preety",
-		"muhaiminul",
-		"tanvir",
-		"zara",
-		"raka",
-	])
+	tinyFriend(["nadia", "rafa", "sabid", "preety", "muhaiminul", "tanvir"])
 );
